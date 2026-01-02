@@ -1,0 +1,13 @@
+{
+  "Program1": {
+    "description": "Ini adalah Program 1",
+    "routes": {
+      "Sub Menu Program 1": {
+        "description": "View All "
+      }
+    }
+  },
+  "Program2": {
+    "description":  "Ini adalah Program 2 "
+  }
+}

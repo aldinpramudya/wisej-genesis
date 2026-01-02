@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Program/">
+    <Project Path="Programs1/Programs1.vbproj" />
+    <Project Path="Programs2/Programs2.vbproj" />
+  </Folder>
+  <Project Path="wisej-genesis/wisej-genesis.vbproj" />
+</Solution>
