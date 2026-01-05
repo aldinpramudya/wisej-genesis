@@ -36,10 +36,10 @@ Partial Class Program3
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(29, 192)
+        Me.TabControl1.Location = New System.Drawing.Point(15, 75)
         Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.PageInsets = New Wisej.Web.Padding(1, 40, 1, 1)
-        Me.TabControl1.Size = New System.Drawing.Size(1036, 291)
+        Me.TabControl1.PageInsets = New Wisej.Web.Padding(1, 30, 1, 1)
+        Me.TabControl1.Size = New System.Drawing.Size(1119, 436)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
@@ -47,16 +47,16 @@ Partial Class Program3
         Me.TabPage1.Controls.Add(Me.TextBox2)
         Me.TabPage1.Location = New System.Drawing.Point(0, 0)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(1034, 250)
+        Me.TabPage1.Size = New System.Drawing.Size(1117, 405)
         Me.TabPage1.Text = "TabPage1"
         '
         'TextBox2
         '
         Me.TextBox2.Label.Position = Wisej.Web.LabelPosition.Left
         Me.TextBox2.LabelText = "Data 1"
-        Me.TextBox2.Location = New System.Drawing.Point(30, 36)
+        Me.TextBox2.Location = New System.Drawing.Point(20, 26)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(231, 30)
+        Me.TextBox2.Size = New System.Drawing.Size(231, 22)
         Me.TextBox2.TabIndex = 2
         Me.TextBox2.Watermark = "Isi Data Page 1"
         '
@@ -65,16 +65,16 @@ Partial Class Program3
         Me.TabPage2.Controls.Add(Me.TextBox3)
         Me.TabPage2.Location = New System.Drawing.Point(0, 0)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Size = New System.Drawing.Size(1034, 250)
+        Me.TabPage2.Size = New System.Drawing.Size(1117, 405)
         Me.TabPage2.Text = "TabPage2"
         '
         'TextBox3
         '
         Me.TextBox3.Label.Position = Wisej.Web.LabelPosition.Left
         Me.TextBox3.LabelText = "Data 1"
-        Me.TextBox3.Location = New System.Drawing.Point(32, 36)
+        Me.TextBox3.Location = New System.Drawing.Point(21, 31)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(231, 30)
+        Me.TextBox3.Size = New System.Drawing.Size(231, 22)
         Me.TextBox3.TabIndex = 2
         Me.TextBox3.Watermark = "Isi Data Page 2"
         '
@@ -82,9 +82,9 @@ Partial Class Program3
         '
         Me.TextBox1.Label.Position = Wisej.Web.LabelPosition.Left
         Me.TextBox1.LabelText = "Data 1"
-        Me.TextBox1.Location = New System.Drawing.Point(30, 59)
+        Me.TextBox1.Location = New System.Drawing.Point(15, 13)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(231, 30)
+        Me.TextBox1.Size = New System.Drawing.Size(231, 22)
         Me.TextBox1.TabIndex = 1
         '
         'Program3
@@ -92,7 +92,7 @@ Partial Class Program3
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "Program3"
-        Me.Size = New System.Drawing.Size(1154, 515)
+        Me.Size = New System.Drawing.Size(1167, 525)
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()

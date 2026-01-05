@@ -26,12 +26,11 @@ Partial Class UserControl2
         '
         'TextBox1
         '
-        Me.TextBox1.Anchor = Wisej.Web.AnchorStyles.Left
         Me.TextBox1.Label.Position = Wisej.Web.LabelPosition.Left
         Me.TextBox1.LabelText = "Data User Control 2"
         Me.TextBox1.Location = New System.Drawing.Point(15, 15)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(466, 30)
+        Me.TextBox1.Size = New System.Drawing.Size(510, 30)
         Me.TextBox1.TabIndex = 0
         '
         'UserControl2

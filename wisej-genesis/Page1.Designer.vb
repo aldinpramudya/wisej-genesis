@@ -20,8 +20,8 @@ Partial Class Page1
     'It can be modified using the Wisej Form Designer.  
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
-        Dim TreeNode11 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
-        Dim TreeNode12 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
+        Dim TreeNode1 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
+        Dim TreeNode2 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
         Me.PanelComponents = New Wisej.Web.Panel()
         Me.TreeView1 = New Wisej.Web.TreeView()
         Me.PanelMain = New Wisej.Web.Panel()
@@ -48,13 +48,13 @@ Partial Class Page1
             Or Wisej.Web.AnchorStyles.Right), Wisej.Web.AnchorStyles)
         Me.TreeView1.Location = New System.Drawing.Point(20, 72)
         Me.TreeView1.Name = "TreeView1"
-        TreeNode11.Name = "Node0"
-        TreeNode12.Name = "Node1"
-        TreeNode12.Text = "Node1"
-        TreeNode11.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode12})
-        TreeNode11.Text = "ComboBox"
-        Me.TreeView1.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode11})
-        Me.TreeView1.Size = New System.Drawing.Size(201, 460)
+        TreeNode1.Name = "Node0"
+        TreeNode2.Name = "Node1"
+        TreeNode2.Text = "Node1"
+        TreeNode1.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode2})
+        TreeNode1.Text = "ComboBox"
+        Me.TreeView1.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode1})
+        Me.TreeView1.Size = New System.Drawing.Size(201, 514)
         Me.TreeView1.TabIndex = 0
         '
         'PanelMain
@@ -72,7 +72,7 @@ Partial Class Page1
         Me.Label1.Font = New System.Drawing.Font("default", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)
         Me.Label1.Location = New System.Drawing.Point(255, 23)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(126, 34)
+        Me.Label1.Size = New System.Drawing.Size(128, 29)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Label Title"
         '
@@ -95,7 +95,7 @@ Partial Class Page1
         Me.Controls.Add(Me.PanelMain)
         Me.Controls.Add(Me.PanelComponents)
         Me.Name = "Page1"
-        Me.Size = New System.Drawing.Size(1160, 518)
+        Me.Size = New System.Drawing.Size(1160, 586)
         Me.Text = "Page1"
         Me.PanelComponents.ResumeLayout(False)
         Me.ResumeLayout(False)

@@ -28,7 +28,7 @@ Partial Class Program2
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("default", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)
-        Me.Label1.Location = New System.Drawing.Point(50, 46)
+        Me.Label1.Location = New System.Drawing.Point(16, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(162, 22)
         Me.Label1.TabIndex = 0
