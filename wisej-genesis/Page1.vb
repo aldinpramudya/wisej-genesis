@@ -1,6 +1,7 @@
 ﻿Imports System
 Imports System.IO
 Imports System.Net
+Imports Wisej.Core
 Imports Wisej.Web
 
 Public Class Page1
@@ -8,6 +9,10 @@ Public Class Page1
 
     'Menyimpan Category Nodes
     Private CategoryNodes As New List(Of TreeNode)
+
+    Public Sub Page1()
+        InitializeComponent()
+    End Sub
 
     Private Sub Page1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim hash As String = Application.Hash
@@ -97,46 +102,95 @@ Public Class Page1
 
     Private Sub PopulateTreeList()
         Dim text As String = File.ReadAllText(Path.Combine(Application.MapPath("RoutingBrowser.json")))
-        Dim data = Wisej.Core.WisejSerializer.Parse(text)
-
+        Dim data = WisejSerializer.Parse(text)
         Me.TreeView1.Nodes.Clear()
 
-        For Each category As Wisej.Core.DynamicObject.Member In CType(data, IEnumerable(Of Wisej.Core.DynamicObject.Member))
+        For Each category As DynamicObject.Member In CType(data, IEnumerable(Of DynamicObject.Member))
             Dim categoryName As String = category.Name
             Dim categoryData As Object = CType(category.Value, Object)
 
-            'Membuat Node Kategori
+            ' Membuat Node Kategori
             Dim categoryNode As New TreeNode With {
-                .Text = categoryName,
-                .Name = categoryName
-            }
+            .Text = categoryName,
+            .Name = categoryName
+        }
+            categoryNode.UserData("Type") = "Category"
 
-            categoryNode.UserData.Type = "Category"
+            Dim hasRoutes As Boolean = False
+            Try
+                hasRoutes = (categoryData.routes IsNot Nothing)
+            Catch
+                hasRoutes = False
+            End Try
 
-            If categoryData.routes IsNot Nothing Then
-                For Each route As Wisej.Core.DynamicObject.Member In CType(categoryData.routes, IEnumerable(Of Wisej.Core.DynamicObject.Member))
+            If hasRoutes Then
+                For Each route As DynamicObject.Member In CType(categoryData.routes, IEnumerable(Of DynamicObject.Member))
                     Dim routeName As String = route.Name
                     Dim routeData As Object = CType(route.Value, Object)
 
-                    'Buat Node Route
+                    ' Ambil description dengan aman
+                    Dim routeDescription As String = ""
+                    Try
+                        routeDescription = routeData.description.ToString()
+                    Catch
+                        routeDescription = ""
+                    End Try
+
+                    ' Ambil assembly dengan aman
+                    Dim routeAssembly As String = ""
+                    Try
+                        routeAssembly = routeData.assembly.ToString()
+                    Catch
+                        routeAssembly = ""
+                    End Try
+
+                    ' Buat Node Route
                     Dim routeNode As New TreeNode With {
-                        .Text = routeName,
-                        .Name = routeName
-                    }
-                    routeNode.UserData.Type = "Route"
+                    .Text = routeName,
+                    .Name = routeName
+                }
+                    routeNode.UserData("Type") = "Route"
 
                     routeNode.Tag = New With {
-                        .Title = routeName,
-                        .Description = routeData.description,
-                        .Category = categoryName,
-                        .Hash = String.Format("{0}/{1}", categoryName, routeName).Replace(" ", "%20")
-                    }
+                    .Title = routeName,
+                    .Description = routeDescription,
+                    .Category = categoryName,
+                    .Control = routeName,
+                    .Info = routeData,
+                    .Hash = String.Format("{0}/{1}", categoryName, routeName).Replace(" ", "%20")
+                }
 
                     categoryNode.Nodes.Add(routeNode)
                 Next
+            Else
+
+                Dim categoryDescription As String = ""
+                Try
+                    categoryDescription = categoryData.description.ToString()
+                Catch
+                    categoryDescription = ""
+                End Try
+
+                Dim categoryAssembly As String = ""
+                Try
+                    categoryAssembly = categoryData.assembly.ToString()
+                Catch
+                    categoryAssembly = ""
+                End Try
+
+                categoryNode.Tag = New With {
+                .Title = categoryName,
+                .Description = categoryDescription,
+                .Category = categoryName,
+                .Control = categoryName,
+                .Info = categoryData,
+                .Hash = String.Format("{0}", categoryName).Replace(" ", "%20")
+            }
             End If
+
             Me.TreeView1.Nodes.Add(categoryNode)
         Next
+
         If Me.TreeView1.Nodes.Count > 0 Then
             Me.TreeView1.SelectedNode = Me.TreeView1.Nodes(0)
         End If
@@ -158,21 +212,18 @@ Public Class Page1
         Dim container As Control = Me.PanelMain
         container.Controls.Clear(True)
 
+        If node.Tag Is Nothing Then
+            Return
+        End If
+
         Dim data As Object = CType(node.Tag, Object)
         Dim category As String = data.Category
         Dim control As String = If(data.Control IsNot Nothing, data.Control.ToString(), "")
         Dim title As String = data.Title
+        Dim description As String = data.Description
         Dim info As Object = data.Info
 
         Dim culture As String = Application.CurrentCulture.TwoLetterISOLanguageName
-        Dim description As String = ""
-
-        'Ambil Deskripsi
-        Try
-            description = info("description")
-        Catch
-            description = "Data Description Masih Belum Dapat Diambil"
-        End Try
 
         'ambil Fully Qualified Name dari assembly
         Dim fullyQualifiedName As String = Nothing
@@ -184,38 +235,94 @@ Public Class Page1
 
         If fullyQualifiedName IsNot Nothing Then
             Try
+                If Not fullyQualifiedName.Contains(",") Then
+                    Throw New Exception(String.Format("Invalid assembly format: '{0}'. Expected format: 'TypeName, AssemblyName.dll'", fullyQualifiedName))
+                End If
+
                 Dim components As String() = fullyQualifiedName.Split(","c)
-                Dim assemblyName As String = components(1).Trim()
+
+                If components.Length < 2 Then
+                    Throw New Exception(String.Format("Invalid assembly format: '{0}'. Expected format: 'TypeName, AssemblyName.dll'", fullyQualifiedName))
+                End If
+
                 Dim typeName As String = components(0).Trim()
+                Dim assemblyName As String = components(1).Trim()
+
+                Console.WriteLine("TypeName: " & typeName)
+                Console.WriteLine("AssemblyName: " & assemblyName)
+
+                If String.IsNullOrEmpty(assemblyName) Then
+                    Throw New Exception("Assembly name is empty")
+                End If
 
                 Dim directory As String = Path.GetDirectoryName(Application.ExecutablePath)
                 Dim pathFile As String = Path.Combine(directory, assemblyName)
 
-                Dim assembly As System.Reflection.Assembly = Application.LoadAssembly(pathFile)
+                Console.WriteLine("Assembly Path: " & pathFile)
+
+                If Not File.Exists(pathFile) Then
+                    Throw New Exception(String.Format("Assembly file not found: {0}", pathFile))
+                End If
+
+                Dim assembly As System.Reflection.Assembly = Nothing
+
+                Try
+                    assembly = System.Reflection.Assembly.LoadFrom(pathFile)
+                Catch ex As Exception
+                    Dim nameWithoutExtension As String = Path.GetFileNameWithoutExtension(assemblyName)
+                    assembly = System.Reflection.Assembly.Load(nameWithoutExtension)
+                End Try
+
+                If assembly Is Nothing Then
+                    Throw New Exception("Failed to load assembly")
+                End If
 
                 Dim type As Type = assembly.GetTypes().Where(Function(t) t.Name = typeName).FirstOrDefault()
 
-                If type IsNot Nothing Then
-                    Dim demoInstance As Control = CType(Activator.CreateInstance(type), Control)
-
-                    If node.UserData.args IsNot Nothing Then
-                        demoInstance.UserData.args = node.UserData.args
-                    End If
-
-                    demoInstance.Dock = DockStyle.Fill
-                    container.Controls.Add(demoInstance)
-
-                    container.Text = title
-                    Application.Hash = data.Hash
-
-                    Me.Label1.Text = String.Format("{0} {1}", control, If(title, demoInstance.Name))
-                    Me.Label2.Text = If(description, "")
+                If type Is Nothing Then
+                    Dim availableTypes As String = String.Join(", ", assembly.GetTypes().Select(Function(t) t.Name))
+                    Throw New Exception(String.Format("Type '{0}' not found in assembly. Available types: {1}", typeName, availableTypes))
                 End If
 
+                Dim demoInstance As Control = CType(Activator.CreateInstance(type), Control)
+
+                If node.UserData("args") IsNot Nothing Then
+                    demoInstance.UserData("args") = node.UserData("args")
+                End If
+
+                demoInstance.Dock = DockStyle.Fill
+                container.Controls.Add(demoInstance)
+                container.Text = title
+                Application.Hash = data.Hash
+
+                Me.Label1.Text = String.Format("{0} {1}", control, If(title, demoInstance.Name))
+                Me.Label2.Text = If(description, "")
+
             Catch ex As Exception
-                MessageBox.Show(String.Format("Error loading demo: {0}", ex.Message),
+                MessageBox.Show(String.Format("Error loading demo:" & vbCrLf & vbCrLf &
+                                        "Message: {0}" & vbCrLf & vbCrLf &
+                                        "Assembly: {1}" & vbCrLf & vbCrLf &
+                                        "StackTrace: {2}",
+                                        ex.Message,
+                                        fullyQualifiedName,
+                                        ex.StackTrace),
                           "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
+        Else
+            UpdateUIWithoutDemo(category, control, title, description, data.Hash)
         End If
+    End Sub
+
+    'Debugging Only
+    Private Sub UpdateUIWithoutDemo(category As String, control As String, title As String, description As String, hash As String)
+        Application.Hash = hash
+        Me.Label1.Text = String.Format("{0} - {1}", category, title)
+        Me.Label2.Text = description
+
+        Dim label As New Label With {
+            .Text = String.Format("Content: {0}", title),
+            .Dock = DockStyle.Fill
+        }
+        Me.PanelMain.Controls.Add(label)
     End Sub
 End Class

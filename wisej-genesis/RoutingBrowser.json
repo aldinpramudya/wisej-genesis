@@ -3,11 +3,13 @@
     "description": "Ini adalah Program 1",
     "routes": {
       "Sub Menu Program 1": {
-        "description": "View All "
+        "assembly": "UserControl1, Programs1.dll",
+        "description": "Tampilan halaman Program 1"
       }
     }
   },
   "Program2": {
-    "description":  "Ini adalah Program 2 "
+    "assembly" : "Program2, Programs2.dll",
+    "description": "Program 2 View"
   }
 }

@@ -63,15 +63,16 @@ Partial Class Page1
             Or Wisej.Web.AnchorStyles.Right), Wisej.Web.AnchorStyles)
         Me.PanelMain.Location = New System.Drawing.Point(255, 114)
         Me.PanelMain.Name = "PanelMain"
-        Me.PanelMain.Size = New System.Drawing.Size(861, 631)
+        Me.PanelMain.Size = New System.Drawing.Size(888, 631)
         Me.PanelMain.TabIndex = 1
         '
         'Label1
         '
+        Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("default", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)
         Me.Label1.Location = New System.Drawing.Point(255, 23)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(125, 34)
+        Me.Label1.Size = New System.Drawing.Size(126, 34)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Label Title"
         '
@@ -82,7 +83,7 @@ Partial Class Page1
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(264, 73)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(790, 35)
+        Me.Label2.Size = New System.Drawing.Size(714, 35)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida justo a" &
     "t mattis cursus. Pellentesque gravida quam ac ex rutrum porta."
@@ -94,7 +95,7 @@ Partial Class Page1
         Me.Controls.Add(Me.PanelMain)
         Me.Controls.Add(Me.PanelComponents)
         Me.Name = "Page1"
-        Me.Size = New System.Drawing.Size(1133, 598)
+        Me.Size = New System.Drawing.Size(1160, 598)
         Me.Text = "Page1"
         Me.PanelComponents.ResumeLayout(False)
         Me.ResumeLayout(False)
