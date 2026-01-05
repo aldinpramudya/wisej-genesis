@@ -20,8 +20,8 @@ Partial Class Page1
     'It can be modified using the Wisej Form Designer.  
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
-        Dim TreeNode1 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
-        Dim TreeNode2 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
+        Dim TreeNode3 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
+        Dim TreeNode4 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
         Me.PanelComponents = New Wisej.Web.Panel()
         Me.TreeView1 = New Wisej.Web.TreeView()
         Me.PanelMain = New Wisej.Web.Panel()
@@ -48,12 +48,12 @@ Partial Class Page1
             Or Wisej.Web.AnchorStyles.Right), Wisej.Web.AnchorStyles)
         Me.TreeView1.Location = New System.Drawing.Point(20, 72)
         Me.TreeView1.Name = "TreeView1"
-        TreeNode1.Name = "Node0"
-        TreeNode2.Name = "Node1"
-        TreeNode2.Text = "Node1"
-        TreeNode1.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode2})
-        TreeNode1.Text = "ComboBox"
-        Me.TreeView1.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode1})
+        TreeNode3.Name = "Node0"
+        TreeNode4.Name = "Node1"
+        TreeNode4.Text = "Node1"
+        TreeNode3.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode4})
+        TreeNode3.Text = "ComboBox"
+        Me.TreeView1.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode3})
         Me.TreeView1.Size = New System.Drawing.Size(201, 460)
         Me.TreeView1.TabIndex = 0
         '
@@ -83,7 +83,7 @@ Partial Class Page1
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(264, 73)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(714, 35)
+        Me.Label2.Size = New System.Drawing.Size(678, 35)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida justo a" &
     "t mattis cursus. Pellentesque gravida quam ac ex rutrum porta."
@@ -95,7 +95,7 @@ Partial Class Page1
         Me.Controls.Add(Me.PanelMain)
         Me.Controls.Add(Me.PanelComponents)
         Me.Name = "Page1"
-        Me.Size = New System.Drawing.Size(1160, 598)
+        Me.Size = New System.Drawing.Size(1160, 518)
         Me.Text = "Page1"
         Me.PanelComponents.ResumeLayout(False)
         Me.ResumeLayout(False)

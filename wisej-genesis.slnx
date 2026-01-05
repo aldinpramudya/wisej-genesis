@@ -2,6 +2,7 @@
   <Folder Name="/Program/">
     <Project Path="Programs1/Programs1.vbproj" />
     <Project Path="Programs2/Programs2.vbproj" />
+    <Project Path="Programs3/Programs3.vbproj" Id="17423f7a-d8a3-4747-bda1-ae7b137477ea" />
   </Folder>
   <Project Path="wisej-genesis/wisej-genesis.vbproj" />
 </Solution>

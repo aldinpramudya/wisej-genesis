@@ -26,7 +26,7 @@
 
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))'=='net'">
     <Compile Remove="Startup.vb" />
-    <Content Include="Startup.vb"/>
+    <Content Include="Startup.vb" />
   </ItemGroup>
 
 
@@ -60,6 +60,12 @@
   <ItemGroup>
     <PackageReference Include="Wisej-4" Version="4.0.*-*" />
     <PackageReference Include="System.Data.SqlClient" Version="4.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Programs1\Programs1.vbproj" />
+    <ProjectReference Include="..\Programs2\Programs2.vbproj" />
+    <ProjectReference Include="..\Programs3\Programs3.vbproj" />
   </ItemGroup>
 
 

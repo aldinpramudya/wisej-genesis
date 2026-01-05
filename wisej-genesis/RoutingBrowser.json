@@ -9,7 +9,11 @@
     }
   },
   "Program2": {
-    "assembly" : "Program2, Programs2.dll",
+    "assembly": "Program2, Programs2.dll",
     "description": "Program 2 View"
+  },
+  "Program3": {
+    "assembly": "Program3, Programs3.dll",
+    "description" : "Program 3 View"  
   }
 }
