@@ -20,8 +20,8 @@ Partial Class Page1
     'It can be modified using the Wisej Form Designer.  
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
-        Dim TreeNode3 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
-        Dim TreeNode4 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
+        Dim TreeNode11 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
+        Dim TreeNode12 As Wisej.Web.TreeNode = New Wisej.Web.TreeNode()
         Me.PanelComponents = New Wisej.Web.Panel()
         Me.TreeView1 = New Wisej.Web.TreeView()
         Me.PanelMain = New Wisej.Web.Panel()
@@ -48,12 +48,12 @@ Partial Class Page1
             Or Wisej.Web.AnchorStyles.Right), Wisej.Web.AnchorStyles)
         Me.TreeView1.Location = New System.Drawing.Point(20, 72)
         Me.TreeView1.Name = "TreeView1"
-        TreeNode3.Name = "Node0"
-        TreeNode4.Name = "Node1"
-        TreeNode4.Text = "Node1"
-        TreeNode3.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode4})
-        TreeNode3.Text = "ComboBox"
-        Me.TreeView1.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode3})
+        TreeNode11.Name = "Node0"
+        TreeNode12.Name = "Node1"
+        TreeNode12.Text = "Node1"
+        TreeNode11.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode12})
+        TreeNode11.Text = "ComboBox"
+        Me.TreeView1.Nodes.AddRange(New Wisej.Web.TreeNode() {TreeNode11})
         Me.TreeView1.Size = New System.Drawing.Size(201, 460)
         Me.TreeView1.TabIndex = 0
         '
@@ -81,9 +81,9 @@ Partial Class Page1
         Me.Label2.Anchor = CType(((Wisej.Web.AnchorStyles.Top Or Wisej.Web.AnchorStyles.Left) _
             Or Wisej.Web.AnchorStyles.Right), Wisej.Web.AnchorStyles)
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(264, 73)
+        Me.Label2.Location = New System.Drawing.Point(255, 63)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(678, 35)
+        Me.Label2.Size = New System.Drawing.Size(560, 30)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida justo a" &
     "t mattis cursus. Pellentesque gravida quam ac ex rutrum porta."

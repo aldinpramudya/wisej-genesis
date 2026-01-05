@@ -46,5 +46,6 @@
 //                             Custom settings are available using Application.Configuration.Settings.
 {
 	"url": "Default.html",
-	"startup": "wisej_genesis.Program.Main, wisej-genesis"
+	"startup": "wisej_genesis.Program.Main, wisej-genesis",
+	"theme" :  "Clear-2"
 }

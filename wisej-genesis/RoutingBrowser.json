@@ -1,18 +1,22 @@
 {
-  "Program1": {
+  "Program 1": {
     "description": "Ini adalah Program 1",
     "routes": {
       "Sub Menu Program 1": {
         "assembly": "UserControl1, Programs1.dll",
-        "description": "Tampilan halaman Program 1"
+        "description": "Tampilan Halaman Program 1"
+      },
+      "Sub Menu Program 2": {
+        "assembly": "UserControl2, Programs1.dll",
+        "description" :  "Tampilan Halaman Program 2 Sub Menu Program"
       }
     }
   },
-  "Program2": {
+  "Program 2": {
     "assembly": "Program2, Programs2.dll",
     "description": "Program 2 View"
   },
-  "Program3": {
+  "Program 3": {
     "assembly": "Program3, Programs3.dll",
     "description" : "Program 3 View"  
   }

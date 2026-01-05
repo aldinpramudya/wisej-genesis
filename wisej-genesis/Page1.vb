@@ -146,19 +146,19 @@ Public Class Page1
 
                     ' Buat Node Route
                     Dim routeNode As New TreeNode With {
-                    .Text = routeName,
-                    .Name = routeName
-                }
+                        .Text = routeName,
+                        .Name = routeName
+                    }
                     routeNode.UserData("Type") = "Route"
 
                     routeNode.Tag = New With {
-                    .Title = routeName,
-                    .Description = routeDescription,
-                    .Category = categoryName,
-                    .Control = routeName,
-                    .Info = routeData,
-                    .Hash = String.Format("{0}/{1}", categoryName, routeName).Replace(" ", "%20")
-                }
+                        .Title = routeName,
+                        .Description = routeDescription,
+                        .Category = categoryName,
+                        .Control = routeName,
+                        .Info = routeData,
+                        .Hash = String.Format("{0}/{1}", categoryName, routeName).Replace(" ", "%20")
+                    }
 
                     categoryNode.Nodes.Add(routeNode)
                 Next
@@ -179,15 +179,14 @@ Public Class Page1
                 End Try
 
                 categoryNode.Tag = New With {
-                .Title = categoryName,
-                .Description = categoryDescription,
-                .Category = categoryName,
-                .Control = categoryName,
-                .Info = categoryData,
-                .Hash = String.Format("{0}", categoryName).Replace(" ", "%20")
-            }
+                    .Title = categoryName,
+                    .Description = categoryDescription,
+                    .Category = categoryName,
+                    .Control = categoryName,
+                    .Info = categoryData,
+                    .Hash = String.Format("{0}", categoryName).Replace(" ", "%20")
+                }
             End If
-
             Me.TreeView1.Nodes.Add(categoryNode)
         Next
 
@@ -248,6 +247,7 @@ Public Class Page1
                 Dim typeName As String = components(0).Trim()
                 Dim assemblyName As String = components(1).Trim()
 
+
                 Console.WriteLine("TypeName: " & typeName)
                 Console.WriteLine("AssemblyName: " & assemblyName)
 
@@ -295,7 +295,7 @@ Public Class Page1
                 container.Text = title
                 Application.Hash = data.Hash
 
-                Me.Label1.Text = String.Format("{0} {1}", control, If(title, demoInstance.Name))
+                Me.Label1.Text = String.Format("{0}", control, If(title, demoInstance.Name))
                 Me.Label2.Text = If(description, "")
 
             Catch ex As Exception

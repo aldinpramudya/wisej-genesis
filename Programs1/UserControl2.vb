@@ -1,6 +1,6 @@
 ﻿Imports System
 Imports Wisej.Web
 
-Public Class Program3
+Public Class UserControl2
 
 End Class

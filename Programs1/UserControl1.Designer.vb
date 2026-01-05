@@ -26,7 +26,7 @@ Partial Class UserControl1
         'MonthCalendar1
         '
         Me.MonthCalendar1.AutoSize = True
-        Me.MonthCalendar1.Location = New System.Drawing.Point(230, 86)
+        Me.MonthCalendar1.Location = New System.Drawing.Point(13, 15)
         Me.MonthCalendar1.Name = "MonthCalendar1"
         Me.MonthCalendar1.Size = New System.Drawing.Size(299, 327)
         Me.MonthCalendar1.TabIndex = 0
